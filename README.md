@@ -11,6 +11,13 @@
 
 אם אין במחשב winget, הסקריפט יפתח את [עמוד הגרסאות הרשמי](https://github.com/timschneeb/GalaxyBudsClient/releases/latest), שבו אפשר להוריד את מתקין Windows.
 
+### אם החיבור לא מצליח
+
+1. הורד את [Check-Buds-Connection.ps1](./Check-Buds-Connection.ps1).
+2. פתח PowerShell בתיקיית ההורדה והריץ: `powershell -NoProfile -ExecutionPolicy Bypass -File .\\Check-Buds-Connection.ps1`.
+3. הסקריפט בודק את מצב Bluetooth, התקנים מזוהים והתקנת GalaxyBudsClient. הוא אינו משנה הגדרות ואינו מתחבר לאוזניות.
+4. העתק את הפלט ושלח אותו לתמיכה כדי לאבחן את הבעיה.
+
 ## מה חשוב לדעת על השליטה
 
 כדי לא להציג כפתורים מדומים כאילו הם שולטים באוזניות: ממשק הדפדפן `index.html` הוא כרגע אב-טיפוס חזותי, ואינו שולח פקודות ANC / EQ / מגע לאוזניות. לצורך שליטה אמיתית בפקודות הקנייניות של Samsung, ההתקנה משתמשת ב-GalaxyBudsClient — פרויקט קוד פתוח נפרד שמממש תקשורת Bluetooth מסוג SPP/RFCOMM.
