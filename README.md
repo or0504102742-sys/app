@@ -1,16 +1,30 @@
 # Galaxy Buds Studio
 
-ממשק שולחני בעברית לניהול נוח של Galaxy Buds.
+ממשק עברי וערכת התקנה ל-Windows עבור Galaxy Buds, עם יעד ראשוני של **Samsung Galaxy Buds3 FE**.
 
-## הפעלה
-- פתחו את `index.html` ב-Chrome או Edge.
-- כדי לסרוק התקני Bluetooth נדרש HTTPS או localhost, והרשאת Bluetooth בדפדפן.
-- אפשר להריץ שרת מקומי מתוך התיקייה: `python -m http.server 8000` ואז לפתוח `http://localhost:8000`.
+## התקנה מהירה ב-Windows
 
-## מה עובד כרגע
-- ממשק RTL רספונסיבי.
-- בחירת התקן Bluetooth באמצעות Web Bluetooth בדפדפנים תואמים.
-- קריאת רמת סוללה כללית אם ההתקן חושף את תקן Battery Service.
+1. הורד את הקובץ [Install-Windows.bat](./Install-Windows.bat).
+2. לחץ עליו פעמיים ואשר את התקנת GalaxyBudsClient דרך Windows Package Manager.
+3. פתח את **GalaxyBudsClient** מתפריט Start.
+4. העבר את האוזניות למצב צימוד, בחר אותן באפליקציה ופעל לפי הוראות החיבור.
 
-## מגבלות חשובות
-זהו פרויקט קהילתי לא רשמי. ממשק מצבי ANC, צליל סביבה, EQ והעדפות מגע הוא כרגע המחשה בלבד. Samsung Galaxy Buds משתמשות בפרוטוקולים/מאפייני BLE ייעודיים, ותמיכה בשליטה אמיתית דורשת מימוש ואימות של הפרוטוקול עבור דגם האוזניות המסוים. אין כאן הבטחה שכל דגם יתחבר או יחשוף סוללה.
+אם אין במחשב winget, הסקריפט יפתח את [עמוד הגרסאות הרשמי](https://github.com/timschneeb/GalaxyBudsClient/releases/latest), שבו אפשר להוריד את מתקין Windows.
+
+## מה חשוב לדעת על השליטה
+
+כדי לא להציג כפתורים מדומים כאילו הם שולטים באוזניות: ממשק הדפדפן `index.html` הוא כרגע אב-טיפוס חזותי, ואינו שולח פקודות ANC / EQ / מגע לאוזניות. לצורך שליטה אמיתית בפקודות הקנייניות של Samsung, ההתקנה משתמשת ב-GalaxyBudsClient — פרויקט קוד פתוח נפרד שמממש תקשורת Bluetooth מסוג SPP/RFCOMM.
+
+בגרסה 5.2.0 נוספה תמיכה ב-Galaxy Buds3 FE, אך היא סומנה על ידי המפתחים כלא נבדקה. לכן אין הבטחה שכל פקודה או תכונה תפעל עם כל גרסת קושחה. יש לבדוק בפועל לאחר החיבור.
+
+- [GalaxyBudsClient – קוד המקור](https://github.com/timschneeb/GalaxyBudsClient)
+- [הגרסה האחרונה והמתקין ל-Windows](https://github.com/timschneeb/GalaxyBudsClient/releases/latest)
+- [רישיון GPL-3.0 של פרויקט השליטה](https://github.com/timschneeb/GalaxyBudsClient/blob/master/LICENSE)
+
+## פרטיות וחיבור
+
+GalaxyBudsClient הוא פרויקט צד שלישי, לא מוצר רשמי של Samsung. לפי תיעוד הפרויקט יש בו אפשרויות crowdsourcing ודיווח קריסות; אפשר לבדוק ולכבות אותן בהגדרות האפליקציה. אין להשתמש במקביל באפליקציית הניהול של Samsung ובלקוח הזה בזמן החיבור, כי האוזניות אינן יכולות לנהל שני חיבורי ניהול בו-זמנית.
+
+## פיתוח בהמשך
+
+השלב הבא כדי להפוך את Galaxy Buds Studio לאפליקציה עצמאית באמת הוא לשלב מנוע תקשורת תואם GPL-3.0, להתאים את הממשק העברי לפקודות שנתמכות ב-Buds3 FE, ולבדוק כל פעולה מול אוזניות פיזיות. אין בקוד הנוכחי מימוש עצמאי מאומת של פרוטוקול Samsung.
